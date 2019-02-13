@@ -25,7 +25,7 @@
 import citySelect from '@/lib/citySelect';
 
 export default {
-    name: 'SelectCity',
+    name: 'filterCity',
     mixins: [],
     components: {},
     props: {
