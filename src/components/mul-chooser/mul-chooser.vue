@@ -34,6 +34,12 @@ export default {
                 return [];
             }
         },
+        reset: {
+            type: Boolean,
+            default: function() {
+                return false;
+            }
+        },
         disable: {
             type: Boolean,
             default: function() {
@@ -52,6 +58,11 @@ export default {
     watch: {
         value(val, oldVal) {
             this.nowIndex = val;
+        },
+        reset(val, oldVal) {
+            if (val) {
+                this.selectAll();
+            }
         }
     },
     mounted() {},
