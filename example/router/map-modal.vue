@@ -1,7 +1,7 @@
 <template>
     <div id="ex-map-modal">
         <Button @click="open" class="">打开弹出框</Button>
-        <map-modal v-model="isShow" :data="editItem" :map="this.map" @on-cancel="handleCancel" @on-submit="handleSubmit"></map-modal>
+        <map-modal v-model="isShow" :data="editItem" :map="this.map" :validateData="names" @on-cancel="handleCancel" @on-submit="handleSubmit"></map-modal>
     </div>
 </template>
 <script>
@@ -19,6 +19,9 @@ export default {
                     clientY: 0
                 }
             },
+            names: [{
+                name: '天使之橙'
+            }],
             map: null
         }
     },

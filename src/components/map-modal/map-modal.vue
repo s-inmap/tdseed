@@ -79,6 +79,12 @@ export default {
                 return {};
             }
         },
+        validateData: {
+            type: Array,
+            default: function() {
+                return [];
+            }
+        },
         map: {
             type: Object,
             default: function() {
@@ -97,6 +103,12 @@ export default {
                 callback(new Error('研究区域名字不可以超过16个字符'));
                 return;
             }
+            this.validateData.map((item, index) => {
+                if (item.name === value) {
+                    callback(new Error('名称已存在'));
+                    return;
+                }
+            })
             callback();
         };
         return {
