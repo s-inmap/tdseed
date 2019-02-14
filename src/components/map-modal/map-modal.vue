@@ -160,53 +160,27 @@ export default {
         handleSubmit(name) {
             this.$refs[name].validate((valid) => {
                 if (valid) {
-                    let shop = this.data;
-                    if (shop.type === 1) {
-                        //我的门店
-                        if (this.radioModel === '按区域半径') {
-                            let obj = {
-                                name: this.formValidate.name,
-                                ids: this.data.id,
-                                type: 'circle',
-                                value: this.scope
-                            };
-                            this.$emit('on-submit', obj);
-                        } else {
-                            let obj = {
-                                name: this.formValidate.name,
-                                ids: this.data.id,
-                                type: 'walk',
-                                value: this.scope
-                            };
-                            this.$emit('on-submit', obj);
-                        }
+                    if (this.radioModel === '按区域半径') {
+                        let obj = {
+                            name: this.formValidate.name,
+                            type: 'circle',
+                            value: this.scope
+                        };
+                        this.$emit('on-submit', obj);
                     } else {
-                        //增益排斥品牌
-                        if (this.radioModel === '按区域半径') {
-                            let obj = {
-                                name: this.formValidate.name,
-                                poiIds: [this.data.poiid],
-                                type: 'circle',
-                                userBrandId: this.data.id,
-                                userId: this.data.userId,
-                                value: this.scope
-                            };
-                            this.$emit('on-submit', obj);
-                        } else {
-                            let obj = {
-                                name: this.formValidate.name,
-                                poiIds: [this.data.poiid],
-                                type: 'walk',
-                                userBrandId: this.data.id,
-                                userId: this.data.userId,
-                                value: this.scope
-                            };
-                            this.$emit('on-submit', obj);
-                        }
+                        let obj = {
+                            name: this.formValidate.name,
+                            type: 'walk',
+                            value: this.scope
+                        };
+                        this.$emit('on-submit', obj);
                     }
 
                 } else {
-                    this.$Message.error('表单验证失败!');
+                    this.$Message.error({
+                        content: '表单验证失败!',
+                        maxCount: 1
+                    });
                 }
             })
         },
