@@ -1,5 +1,5 @@
 <template>
-    <div id="filterCity" class="filterCity">
+    <div id="td-filterCity" class="td-filterCity">
         <div class="search">
             <i class="icon-search"></i>
             <AutoComplete v-model="searchCity" class='select_city_auto' :data="this.searchList" @on-search="searchEnter" placeholder="搜索城市" style="width:160px" :filter-method="filterMethod" @on-select="selectedCity">
@@ -123,7 +123,7 @@ export default {
 
 </style>
 <style>
-#filterCity {
+#td-filterCity {
     .ivu-input {
         padding: 4px 0 4px 34px;
         height: 40px;

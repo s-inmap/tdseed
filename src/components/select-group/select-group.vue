@@ -1,5 +1,5 @@
 <template>
-    <div class="ivu-selectgroup" ref="ivu-selectgroup">
+    <div class="td-selectgroup">
         <div class="group" v-for="(item,index) in count" :key="item.id" :class="{super:item.list.length > 1}">
             <!-- index代表組， -->
             <single-condition ref="single-condition" v-model="conditionModel" v-for="(x,y) in item.list" :key="x.id" :index="[index,y]" :data="data" @on-plus="plusCondition" @on-minus="minusCondition" @on-change="changeCondition" class="and" :class="{last:y===item.list.length-1,or:isRelation === 'union'}"></single-condition>
@@ -144,7 +144,7 @@ export default {
 
 </script>
 <style scoped>
-.ivu-selectgroup {
+.td-selectgroup {
     padding: 0 24px;
     margin-top: 0;
     height: 100%;
@@ -232,11 +232,11 @@ export default {
     }
     .super {
         padding: 0 0 0 32px;
-        .ivu-condition {
+        .td-condition {
             border-bottom: 1px solid #E3E3E3;
             position: relative;
         }
-        .ivu-condition:after {
+        .td-condition:after {
             position: absolute;
             left: 50%;
             bottom: -9px;
