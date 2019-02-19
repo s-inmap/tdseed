@@ -9,6 +9,7 @@
                 <router-link to="/filter-city">filter-city</router-link>
                 <router-link to="/table-plus">table-plus</router-link>
                 <router-link to="/select-group">select-group</router-link>
+                <router-link to="/city-plus">city-plus</router-link>
             </nav>
             <div class="components">
                 <router-view/>
