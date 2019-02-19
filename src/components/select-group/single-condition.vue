@@ -1,5 +1,5 @@
 <template>
-    <div class="ivu-condition">
+    <div class="td-condition">
         <div class="condition-group">
             <template>
                 <div class="type">
@@ -492,7 +492,7 @@ export default {
     border: 1px solid var(--border-color);
     margin-left: -1px;
 }
-.ivu-condition {
+.td-condition {
     display: flex;
     align-items: flex-end;
     justify-content: space-between;

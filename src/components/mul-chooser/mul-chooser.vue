@@ -1,5 +1,5 @@
 <template>
-    <div id="MulChooser">
+    <div id="td-mulChooser">
         <div class="chooser-select">
             <span class="all" :class="{allActive:allActive}" @click="selectAll">全选</span>
             <span class="cancel" :class="{cancelActive:cancelActive}" @click="cancelAll">取消选择</span>
@@ -135,9 +135,4 @@ export default {
 
 </style>
 <style>
-#editCanvas {
-    .ivu-modal-mask {
-        background-color: inherit;
-    }
-}
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <div class='page_table_c'>
+    <div class='td-tablePlus' id='td-tablePlus'>
         <div class='header_area'>
             <div class='l_area'>
                 <slot name="header_left"></slot>
@@ -101,7 +101,7 @@ export default {
 
 </style>
 <style>
-.page_table_c {
+#td-tablePlus {
     .page_container {
         font-size: 14px !important;
         .ivu-page-options-sizer {
