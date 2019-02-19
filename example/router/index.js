@@ -28,5 +28,10 @@ export default new Router({
     path: '/select-group',
     name: 'select-group',
     component: (resolve) => require(['./select-group.vue'], resolve)
+  },
+  {
+    path: '/city-plus',
+    name: 'city-plus',
+    component: (resolve) => require(['./city-plus.vue'], resolve)
   }]
 })

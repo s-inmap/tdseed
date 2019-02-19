@@ -7,6 +7,7 @@ import MapModal from '@/components/map-modal'
 import FilterCity from '@/components/filter-city'
 import TablePlus from '@/components/table-plus'
 import SelectGroup from '@/components/select-group'
+import CityPlus from '@/components/city-plus'
 Vue.use(iView)
 
 const components = [
@@ -14,7 +15,8 @@ const components = [
     MapModal,
     FilterCity,
     TablePlus,
-    SelectGroup
+    SelectGroup,
+    CityPlus
 ]
 
 const install = function(Vue) {
