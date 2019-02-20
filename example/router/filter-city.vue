@@ -1,5 +1,5 @@
 <template>
-    <div id="container">
+    <div id="ex-filter-city">
         <div class="position">
             <Poptip placement="bottom-end" width="220" v-model="visible" @on-popper-show="onPopperShow">
                 <div class="cityPop hoverPop">
@@ -40,7 +40,7 @@ export default {
 
 </script>
 <style>
-#container {
+#ex-filter-city {
     position: relative;
     .position {
         position: absolute;

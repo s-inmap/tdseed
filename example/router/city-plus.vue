@@ -1,5 +1,5 @@
 <template>
-    <div id="ex-map-modal">
+    <div id="ex-city-plus">
         <city-plus :data="cityArray" :allowedCity="allowedCity" @on-change="onSelect"></city-plus>
     </div>
 </template>
