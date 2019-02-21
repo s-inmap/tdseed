@@ -1,158 +1,90 @@
 <template>
     <div id="td-filterCity" class="td-filterCity">
-        <div class="search">
-            <i class="icon-search"></i>
-            <AutoComplete v-model="searchCity" class='select_city_auto' :data="this.searchList" @on-search="searchEnter" placeholder="搜索城市" style="width:160px" :filter-method="filterMethod" @on-select="selectedCity">
-            </AutoComplete>
-        </div>
-        <div class="body">
-            <div class="city">
-                <CheckboxGroup v-model="checkAllGroup" @on-change="checkAllGroupChange">
-                    <Checkbox v-for="item in cityArray" :key="item" :label="item"></Checkbox>
-                </CheckboxGroup>
-            </div>
-        </div>
-        <div class="footer">
-            <div>已选{{num}}个</div>
-            <div>
-                <div class="cancle" @click="handleCancel">取消</div>
-                <Button type="primary" size="large" @click="handleSubmit">更新城市</Button>
-            </div>
+        <div class="position">
+            <Poptip placement="bottom-end" width="220" v-model="visible" @on-popper-show="onPopperShow">
+                <div class="cityPop hoverPop">
+                    <i class="icon-funnel"></i>选择城市
+                </div>
+                <div class="api" slot="content">
+                    <city-content v-model="checkCity" :data="selectCityData" @on-change="cityChange" @on-submit="submitCity" @on-cancel="cancelCity"></city-content>
+                </div>
+            </Poptip>
         </div>
     </div>
 </template>
 <script>
-import citySelect from '@/lib/citySelect';
+import cityContent from './city-content';
 
 export default {
     name: 'filterCity',
     mixins: [],
-    components: {},
+    components: {
+        cityContent
+    },
     props: {
-        value: {
-            type: Array,
-            default: function() {
-                return [];
-            }
-        },
         data: {
             type: Array,
             default: function() {
                 return [];
             }
-        }
+        },
     },
     data() {
         return {
-            searchCity: '',
-            num: 0,
-            orginList: [],
-            searchList: [],
-            checkAllGroup: [],
-            cityArray: [],
+            visible: false,
+            checkCity: [],
+            selectCityData: []
         }
     },
     computed: {},
-    watch: {
-        data(val, oldVal) {
-            if (val.length == 0) {
-                this.reset();
-            } else {
-                //数据从父类传过来
-                let tableData = val[0];
-                let city = [];
-                tableData.map((item, index) => {
-                    city.push(item.city);
-                });
-
-                //设置右侧选中项
-                this.cityArray = _.uniq(city);
-            }
-        },
-        value(val, oldVal) {
-            if (val.length > 0) {
-                this.checkAllGroup = val;
-            }
-        }
-    },
+    watch: {},
     created() {},
-    mounted() {
-        this.getSearchArray();
-    },
+    mounted() {},
     methods: {
-        getSearchArray() {
-            this.orginList = citySelect;
-
-            let array = this.orginList.map((item) => {
-                return item.citys;
-            });
-            //用于搜索
-            this.searchList = _.flattenDeep(array);
+        onPopperShow() {
+            this.selectCityData.push(this.data);
+            this.$emit('on-popper-show');
         },
-        searchEnter(x) {},
-        filterMethod(keyword, option) {
-            return option.indexOf(keyword) !== -1;
+        cityChange(value) {
+            this.checkCity = value;
+            this.$emit('on-change', value);
         },
-        selectedCity(cityName) {
-            if (cityName) {
-                if (this.checkAllGroup.indexOf(cityName) === -1) {
-                    this.checkAllGroup.push(cityName);
-                }
-            }
+        submitCity(value) {
+            this.visible = false;
+            this.$emit('on-submit', value);
         },
-        reset() {
-            this.checkAllGroup.splice(0);
-            this.num = 0;
-        },
-        checkAllGroupChange(x) {
-            this.num = x.length;
-            this.$emit('on-change', x);
-        },
-        handleSubmit() {
-            this.$emit('on-submit', this.checkAllGroup);
-        },
-        handleCancel() {
-            this.$emit('on-cancel', this.checkAllGroup);
-        },
+        cancelCity(value) {
+            this.visible = false;
+            this.$emit('on-cancel', value);
+        }
     }
 }
 
 </script>
 <style scoped>
-@import '../../assets/css/filter-city/filter-city.css';
+
 
 </style>
 <style>
 #td-filterCity {
-    .ivu-input {
-        padding: 4px 0 4px 34px;
-        height: 40px;
-        line-height: 40px;
-        border-radius: 0;
-        border-top-left-radius: 2px;
-        border-top-right-radius: 2px;
-        border: 0;
-    }
-    .ivu-poptip-body-content {
-        overflow: auto;
-    }
-    label {
-        .ivu-checkbox {
-            margin-right: 8px;
+    position: relative;
+    .position {
+        position: absolute;
+        top: 0;
+        left: 0;
+        .cityPop {
+            line-height: 32px;
+            width: 104px;
+            cursor: pointer;
+            text-align: center;
+            font-size: 14px;
+            color: var(--color-hover);
         }
-    }
-    .ivu-select-dropdown-list {
-        height: auto;
-        max-height: 200px;
-    }
-    .search {
-        .ivu-select-item {
-            text-align: left;
+        .ivu-poptip-body {
+            padding: 0;
         }
-    }
-    .select_city_auto {
-        .ivu-input:focus {
-            box-shadow: none;
+        .ivu-poptip-body-content {
+            overflow: hidden;
         }
     }
 }
