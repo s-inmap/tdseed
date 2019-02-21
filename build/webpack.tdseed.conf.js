@@ -43,6 +43,18 @@ module.exports = merge(webpackBaseConfig, {
             commonjs: 'iview',
             commonjs2: 'iview',
             amd: 'iview'
+        },
+        lodash: {
+            root: '_',
+            commonjs: 'lodash',
+            commonjs2: 'lodash',
+            amd: 'lodash'
+        },
+        axios: {
+            root: 'axios',
+            commonjs: 'axios',
+            commonjs2: 'axios',
+            amd: 'axios'
         }
     },
     plugins: [
