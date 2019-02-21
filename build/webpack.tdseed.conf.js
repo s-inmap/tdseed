@@ -37,6 +37,12 @@ module.exports = merge(webpackBaseConfig, {
             commonjs: 'vue',
             commonjs2: 'vue',
             amd: 'vue'
+        },
+        iview: {
+            root: 'iView',
+            commonjs: 'iview',
+            commonjs2: 'iview',
+            amd: 'iview'
         }
     },
     plugins: [

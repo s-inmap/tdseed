@@ -1,6 +1,6 @@
 {
     "name": "tdseed",
-    "version": "0.1.24",
+    "version": "0.1.27",
     "title": "tdseed",
     "description": "A city map with components library by Vue2.0.js",
     "author": "huiyin li <lihuiyin128@163.com>",
@@ -15,12 +15,12 @@
         "build": "node build/build.js"
     },
     "peerDependencies": {
-        "vue": "^2.5.2"
+        "vue": "^2.5.2",
+        "iview": "^2.14.3"
     },
     "dependencies": {
         "axios": "^0.18.0",
-        "lodash": "^4.17.10",
-        "iview": "^2.14.3"
+        "lodash": "^4.17.10"
     },
     "devDependencies": {
         "autoprefixer": "^7.1.2",
