@@ -138,6 +138,43 @@ export default {
                 this.isRelation = 'intersection';
                 this.filters.conditionGroups[0]['relation'] = 'and';
             }
+        },
+        addGroup() {
+            this.count.push({
+                id: utils.random(),
+                list: [{}]
+            });
+
+            this.filters.conditionGroups.push({
+                relation: '',
+                conditions: []
+            });
+        },
+        clear() {
+            this.count.splice(0);
+            this.filters.conditionGroups.splice(0);
+        },
+        validate() {
+            //验证方法
+            let ary = [];
+            this.$refs['single-condition'].map(item => {
+                item.validate((valid) => {
+                    if (valid === false) {
+                        //如果未验证通过，数组里插入任意一个值
+                        ary.push(0);
+                    }
+                });
+            });
+            //全部验证通过
+            if (ary.length === 0) {
+                return {
+                    validate: true,
+                    data: this.filters
+                };
+            }
+            return {
+                validate: false
+            };
         }
     }
 }

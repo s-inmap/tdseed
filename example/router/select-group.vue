@@ -37,18 +37,7 @@ export default {
                 installation: classification
             });
             this.visible = false;
-            this.addGroup();
-        },
-        addGroup() {
-            this.count.push({
-                id: utils.random(),
-                list: [{}]
-            });
-
-            this.filters.conditionGroups.push({
-                relation: '',
-                conditions: []
-            });
+            this.$refs['selectGroup'].addGroup();
         },
         onMinus(x) {
             console.log(x)
@@ -57,28 +46,13 @@ export default {
             }
         },
         submit() {
-            //验证方法
-            let ary = [];
-            this.$refs['selectGroup'].$refs['single-condition'].map(item => {
-                item.validate((valid) => {
-                    if (valid === false) {
-                        //如果未验证通过，数组里插入任意一个值
-                        ary.push(0);
-                    }
-                });
-            });
-
-            //全部验证通过
-            if (ary.length === 0) {
-                console.log('全部验证通过', this.filters)
-            }
+            let obj = this.$refs['selectGroup'].validate();
+            console.log(obj)
         },
         clearConditions() {
             this.visible = true;
-            this.count.splice(0);
             this.recValue = '';
-            this.filters.conditionGroups.splice(0);
-
+            this.$refs['selectGroup'].clear();
             this.$emit('on-clear');
         },
     }
