@@ -33,5 +33,10 @@ export default new Router({
     path: '/city-plus',
     name: 'city-plus',
     component: (resolve) => require(['./city-plus.vue'], resolve)
+  },
+  {
+    path: '/city-content',
+    name: 'city-content',
+    component: (resolve) => require(['./city-content.vue'], resolve)
   }]
 })
