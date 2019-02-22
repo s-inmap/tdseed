@@ -7,6 +7,7 @@
                 <router-link to="/mul">mul-chooser</router-link>
                 <router-link to="/map-modal">map-modal</router-link>
                 <router-link to="/filter-city">filter-city</router-link>
+                <router-link to="/city-content">city-content</router-link>
                 <router-link to="/table-plus">table-plus</router-link>
                 <router-link to="/select-group">select-group</router-link>
                 <router-link to="/city-plus">city-plus</router-link>
