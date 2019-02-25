@@ -39,7 +39,7 @@ module.exports = merge(webpackBaseConfig, {
             amd: 'vue'
         },
         iview: {
-            root: 'iView',
+            root: 'iview',
             commonjs: 'iview',
             commonjs2: 'iview',
             amd: 'iview'
@@ -49,12 +49,6 @@ module.exports = merge(webpackBaseConfig, {
             commonjs: 'lodash',
             commonjs2: 'lodash',
             amd: 'lodash'
-        },
-        axios: {
-            root: 'axios',
-            commonjs: 'axios',
-            commonjs2: 'axios',
-            amd: 'axios'
         }
     },
     plugins: [
@@ -76,12 +70,6 @@ module.exports = merge(webpackBaseConfig, {
         new webpack.HashedModuleIdsPlugin(),
         // enable scope hoisting
         new webpack.optimize.ModuleConcatenationPlugin(),
-        new webpack.optimize.CommonsChunkPlugin({
-            name: 'app',
-            async: 'vendor-async',
-            children: true,
-            minChunks: 3
-        }),
         new UglifyJsPlugin({
             parallel: true,
             sourceMap: true,
@@ -91,7 +79,7 @@ module.exports = merge(webpackBaseConfig, {
                 },
                 output: {
                     comments: false
-                },
+                }
             }
         })
     ]

@@ -8,8 +8,8 @@ import router from './router';
 import axios from 'axios';
 //开发模式
 import tdseed from '../src/index';
-
 // import tdseed from '../dist/tdseed.min.js';
+// import '../dist/static/tdseed.css';
 
 Vue.prototype.$axios = axios;
 
