@@ -11,15 +11,6 @@ import SelectGroup from '@/components/select-group'
 import CityPlus from '@/components/city-plus'
 Vue.use(iView)
 
-// const components = [
-//     MulChooser,
-//     MapModal,
-//     FilterCity,
-//     CityContent,
-//     TablePlus,
-//     SelectGroup,
-//     CityPlus
-// ]
 const components = {
     MulChooser,
     MapModal,
@@ -38,16 +29,11 @@ const install = function(Vue, opts = {}) {
     Object.keys(tdseed).forEach(key => {
         Vue.component(key, tdseed[key]);
     });
-    // components.map(component => {
-    //     console.log(32222,component)
-    //     Vue.component(component.name, component);
-    // });
 };
 
 
 if (typeof window !== 'undefined' && window.Vue) {
     install(window.Vue);
-    window.Vue.use(tdseed);
 };
 
 
