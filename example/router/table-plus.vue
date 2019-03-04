@@ -1,6 +1,6 @@
 <template>
     <div class='ex-table-plus'>
-        <table-plus :options='tableOp' @on-selection-change="selectionChange">
+        <table-plus id='td-tablePlus' :options='tableOp' @on-selection-change="selectionChange">
         </table-plus>
     </div>
 </template>

@@ -61,12 +61,8 @@ export default {
 }
 
 </script>
-<style scoped>
-
-
-</style>
 <style>
-#td-filterCity {
+.td-filterCity {
     position: relative;
     .position {
         position: absolute;

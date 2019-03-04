@@ -107,7 +107,7 @@ export default {
 
 </style>
 <style>
-#td-city {
+.td-city {
     font-size: 14px;
     .search-city {
         display: flex;

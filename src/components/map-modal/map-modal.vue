@@ -1,5 +1,5 @@
 <template>
-    <Modal v-model="showModal" width="262" :closable="true" :mask-closable="false" title="编辑研究区域" id="td-mapModal" ref="editCanvas" class-name="selfModal editModal" @on-cancel="handleCancel('formValidate')">
+    <Modal v-model="showModal" width="262" :closable="true" :mask-closable="false" title="编辑研究区域" id="td-mapModal" ref="editCanvas" class-name="td-mapModal" @on-cancel="handleCancel('formValidate')">
         <!--内容-->
         <div class="arrow"></div>
         <Form label-position="top" ref="formValidate" :model="formValidate" :rules="ruleValidate">
@@ -204,7 +204,7 @@ export default {
 
 
 </style>
-<style scoped>
+<style>
 @import '../../assets/css/mapModal/mapModal.css';
 
 </style>
@@ -213,7 +213,7 @@ export default {
     .ivu-modal-mask {
         background-color: inherit;
     }
-    .selfModal {
+    .td-mapModal {
         color: var(--color-title);
         overflow: inherit;
         .arrow {
