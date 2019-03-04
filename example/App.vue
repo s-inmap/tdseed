@@ -11,6 +11,7 @@
                 <router-link to="/table-plus">table-plus</router-link>
                 <router-link to="/select-group">select-group</router-link>
                 <router-link to="/city-plus">city-plus</router-link>
+                <router-link to="/swipers">swipers</router-link>
             </nav>
             <div class="components">
                 <router-view/>
