@@ -5,7 +5,7 @@
   "description": "A city map with components library by Vue2.0.js",
   "author": "huiyin li <lihuiyin128@163.com>",
   "private": false,
-  "main": "dist/tdseed.min.js",
+  "main": "dist/tdseed.js",
   "files": [
     "dist",
     "src"
