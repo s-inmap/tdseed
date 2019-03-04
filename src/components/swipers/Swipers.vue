@@ -1,5 +1,5 @@
 <template>
-    <div id="Swipers" class="ivu-swipers" ref="swipers">
+    <div class="td-swipers" ref="swipers">
         <div class="swipers-box">
             <div class="swiper-main">
                 <div class="swiper-nav">
@@ -79,7 +79,7 @@ export default {
 
 </script>
 <style>
-.ivu-swipers {
+.td-swipers {
     .swipers-box {
         width: 336px;
         position: absolute;

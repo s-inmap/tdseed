@@ -180,7 +180,7 @@ export default {
 }
 
 </script>
-<style scoped>
+<style>
 .td-selectgroup {
     padding: 0 24px;
     margin-top: 0;

@@ -118,12 +118,12 @@ export default {
 }
 
 </script>
-<style scoped>
+<style>
 @import '../../assets/css/filter-city/filter-city.css';
 
 </style>
 <style>
-#td-cityContent {
+.td-cityContent {
     .ivu-input {
         padding: 4px 0 4px 34px;
         height: 40px;

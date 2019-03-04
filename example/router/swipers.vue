@@ -3,7 +3,7 @@
         <button @click="one">one</button>
         <button @click="two">two</button>
         <button @click="three">three</button>
-        <Swipers ref="swipers">
+        <Swipers ref="swipers" id="Swipers">
             <div slot="nav" class="top">
                 <h1>文章标题</h1>
             </div>
