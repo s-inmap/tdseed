@@ -38,5 +38,10 @@ export default new Router({
     path: '/city-content',
     name: 'city-content',
     component: (resolve) => require(['./city-content.vue'], resolve)
+  },
+  {
+    path: '/swipers',
+    name: 'swipers',
+    component: (resolve) => require(['./swipers.vue'], resolve)
   }]
 })

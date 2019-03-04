@@ -9,6 +9,7 @@ import CityContent from '@/components/filter-city/city-content'
 import TablePlus from '@/components/table-plus'
 import SelectGroup from '@/components/select-group'
 import CityPlus from '@/components/city-plus'
+import Swipers from '@/components/swipers'
 Vue.use(iView)
 
 const components = {
@@ -18,7 +19,9 @@ const components = {
     CityContent,
     TablePlus,
     SelectGroup,
-    CityPlus
+    CityPlus,
+    Swipers,
+    SwiperPane: Swipers.SwiperPane
 }
 
 const tdseed = {
@@ -46,7 +49,9 @@ export default {
     CityContent,
     TablePlus,
     SelectGroup,
-    CityPlus
+    CityPlus,
+    Swipers,
+    SwiperPane: Swipers.SwiperPane
 };
 
 const API = {
