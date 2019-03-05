@@ -2,8 +2,8 @@
     <div class="td-selectgroup">
         <div class="group" v-for="(item,index) in count" :key="item.id" :class="{super:item.list.length > 1}">
             <!-- index代表組， -->
-            <single-condition ref="single-condition" v-model="conditionModel" v-for="(x,y) in item.list" :key="x.id" :index="[index,y]" :data="data" @on-plus="plusCondition" @on-minus="minusCondition" @on-change="changeCondition" class="and" :class="{last:y===item.list.length-1,or:isRelation === 'union'}"></single-condition>
-            <template v-if="item.list.length > 1">
+            <single-condition v-if="item.list[0]" ref="slction" v-for="(x,y) in item.list" :key="x.id" :index="[index,y]" :data="data" @on-plus="plusCondition" @on-minus="minusCondition" @on-change="changeCondition" class="and" :class="{last:y===item.list.length-1,or:isRelation === 'union'}"></single-condition>
+            <template v-if="item.list[0] && item.list.length > 1">
                 <div class="relation" @click="toggleRelation(index)">
                     <span class="intersection" :class="{active:isRelation==='intersection'}" ref="relation">交</span>
                     <span class="union" :class="{active:isRelation==='union'}" ref="union">并</span>
@@ -28,40 +28,31 @@ export default {
             default: function() {
                 return {};
             }
-        },
-        /*
-         * 负责展示
-         * count:[[{
-             id:Number,
-             list:Array
-         },{}],[{}],[{}]]
-         *数组中每项代表条件组[{}]，每个条件组下可以再分条件项对象,每个对象有id属性表示随机数，list属性表示条件项
-         */
-        count: {
-            type: Array,
-            default: function() {
-                return [];
-            }
-        },
-        /*
-         * 负责导出条件数据
-         * filters.conditionGroups:[{
-                relation:String,
-                conditions:Array
-            },{},{}]
-         *数组每项代表条件组，每个条件组对象有一个relation属性表示交集还是并集,每个conditions下可以再分条件项，
-         */
-        filters: {
-            type: Object,
-            default: function() {
-                return {};
-            }
-        },
-
+        }
     },
     data() {
         return {
-            conditionModel: {},
+            /*
+             * 负责展示
+             * count:[[{
+                 id:Number,
+                 list:Array
+             },{}],[{}],[{}]]
+             *数组中每项代表条件组[{}]，每个条件组下可以再分条件项对象,每个对象有id属性表示随机数，list属性表示条件项
+             */
+            count: [],
+            /*
+             * 负责导出条件数据
+             * filters.conditionGroups:[{
+                    relation:String,
+                    conditions:Array
+                },{},{}]
+             *数组每项代表条件组，每个条件组对象有一个relation属性表示交集还是并集,每个conditions下可以再分条件项，
+             */
+            filters: {
+                groupRelation: 'and',
+                conditionGroups: []
+            },
             isRelation: 'intersection',
         }
     },
@@ -117,7 +108,7 @@ export default {
             let index = x[0],
                 subIndex = x[1];
 
-            let item = this.count[index].list;
+            let item = this.count[index].list || [];
 
             item.push({
                 id: utils.random()
@@ -144,7 +135,6 @@ export default {
                 id: utils.random(),
                 list: [{}]
             });
-
             this.filters.conditionGroups.push({
                 relation: '',
                 conditions: []
@@ -157,7 +147,7 @@ export default {
         validate() {
             //验证方法
             let ary = [];
-            this.$refs['single-condition'].map(item => {
+            this.$refs['slction'].map(item => {
                 item.validate((valid) => {
                     if (valid === false) {
                         //如果未验证通过，数组里插入任意一个值

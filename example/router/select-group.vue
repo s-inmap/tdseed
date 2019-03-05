@@ -5,9 +5,9 @@
                 <Icon type="plus-round"></Icon>添加筛选条件
             </Button>
         </div>
-        <select-group ref="selectGroup" :data="conditionData" :count='count' :filters="filters" @on-minus="onMinus"></select-group>
-        <Button type="primary" class="submit" :class="{disabled:this.count.length===0}" @click="submit">开始筛选</Button>
-        <a href="javascript:void(0)" v-if='this.count.length !== 0' class="clear" @click="clearConditions">清空条件</a>
+        <select-group ref="selectGroup" :data="conditionData" @on-minus="onMinus"></select-group>
+        <Button type="primary" class="submit" :class="{disabled:visible}" @click="submit">开始筛选</Button>
+        <a href="javascript:void(0)" v-if='!visible' class="clear" @click="clearConditions">清空条件</a>
     </div>
 </template>
 <script>
@@ -17,27 +17,66 @@ export default {
     data() {
         return {
             visible: true,
-            conditionData: {},
-            count: [],
-            filters: {
-                groupRelation: 'and',
-                conditionGroups: []
-            },
+            conditionData: {}
         }
     },
     mounted() {
-
+        this.mergeObject()
     },
     methods: {
-        addCondition() {
-            this.conditionData = Object.assign({}, {
-                custom: [{
+        async mergeObject() {
+            try {
+                let res = await this.getRecommendListPromise();
+
+                let data = res.data.data || [];
+
+                data.unshift({
                     'key': '距离',
-                }],
-                installation: classification
-            });
-            this.visible = false;
+                });
+                let res1 = await this.getClassification();
+                let data1 = res1.data.data || [];
+
+                this.conditionData = Object.assign({}, {
+                    custom: data,
+                    installation: data1
+                });
+                console.log('1',this.conditionData)
+            } catch (e) {
+                // statements
+                console.log(e);
+            }
+
+        },
+        getClassification() {
+            //获取poi分类
+            let origin = location.origin;
+            let url = origin + '/static/classification.json';
+
+            let config = {
+                method: 'get',
+                url: url
+            }
+
+            return this.$axios(config);
+        },
+        async addCondition() {
+            let res = await this.getRecommendListPromise();
+            let list = res.data.data || [];
+            this.recList = list;
             this.$refs['selectGroup'].addGroup();
+            this.visible = false;
+            this.$emit('on-condition');
+        },
+        getRecommendListPromise() {
+            //获取某用户的推荐任务列表
+            let origin = location.origin;
+            let url = origin + '/static/tasklist.json';
+
+            let config = {
+                method: 'get',
+                url: url
+            }
+            return this.$axios(config);
         },
         onMinus(x) {
             console.log(x)

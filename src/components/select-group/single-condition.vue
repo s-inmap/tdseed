@@ -4,14 +4,14 @@
             <template>
                 <div class="type">
                     <Select v-model="obj.classification" style="width:100px" :class="{error:error.type}" transfer @on-change="changeType">
-                        <Option v-for="item in newData.typeList" :value="item.value" :key="item.value">{{item.label}}</Option>
+                        <Option v-for="item in newData.typeList || []" :value="item.value" :key="item.value">{{item.label}}</Option>
                     </Select>
                     <!-- 选择设施 -->
                     <template>
                         <div v-if="obj.classification === 'poi'" style="display: inline-block;">
                             <Cascader style="width:200px" transfer :data="newData.installation" v-model="obj.installation" :class="{error:error.installation}" @on-change="changeCascader"></Cascader>
                         </div>
-                        <div v-if="obj.classification === 'poi' && obj.installation.length > 0" style="display: inline-block;">
+                        <div v-if="obj.classification === 'poi' && obj.installation[0] && obj.installation.length > 0" style="display: inline-block;">
                             <div class="distance">
                                 <div class="l">
                                     <span>距离</span>
@@ -19,14 +19,14 @@
                                 </div>
                                 <div class="r">
                                     <Select v-model="obj.distance" style="width:90px" :class="{error:error.distance}" transfer @on-change="changeDistanceM">
-                                        <Option v-for="item in newData.distanceMList" :value="item.value" :key="item.value">{{item.label}}</Option>
+                                        <Option v-for="item in newData.distanceMList || []" :value="item.value" :key="item.value">{{item.label}}</Option>
                                     </Select>
                                 </div>
                             </div>
                         </div>
-                        <div v-if="obj.classification === 'poi' && obj.installation.length > 0 && obj.distance !== 0" class="opration" style="display: inline-block;">
+                        <div v-if="obj.classification === 'poi' && obj.installation[0] && obj.installation.length > 0 && obj.distance !== 0" class="opration" style="display: inline-block;">
                             <Select v-model="obj.numCompareSymbol" style="width:90px" :class="{error:error.numCompareSymbol}" transfer @on-change="changeOperation">
-                                <Option v-for="item in newData.operationList" :value="item.value" :key="item.value">{{item.label}}</Option>
+                                <Option v-for="item in newData.operationList || []" :value="item.value" :key="item.value">{{item.label}}</Option>
                             </Select>
                             <div class="r">
                                 <Input v-model.number="obj.num" placeholder="-" style="width: 60px" :class="{error:error.num}"></Input><span>个</span>
@@ -37,18 +37,18 @@
                     <template>
                         <div class="myshop" v-if="obj.classification === 'store'">
                             <Select v-model="obj.customParam" style="width:120px" :class="{error:error.customParam}" transfer @on-change="changeStoreParam">
-                                <Option v-for="item in newData.custom" :value="item.key" :disabled="item.disabled" :key="item.key">{{item.key}}</Option>
+                                <Option v-for="item in newData.custom || []" :value="item.key" :disabled="item.disabled" :key="item.key">{{item.key}}</Option>
                             </Select>
                         </div>
                         <div v-if="obj.classification === 'store' && obj.customParam ==='距离'" style="display: inline-block;">
                             <!-- 选我的门店,选择距离 -->
                             <Select v-model="obj.customValue" style="width:90px" :class="{error:error.customValue}" transfer @on-change="changeStoreDistance">
-                                <Option v-for="item in newData.distanceMList" :value="item.value" :key="item.value">{{item.label}}</Option>
+                                <Option v-for="item in newData.distanceMList || []" :value="item.value" :key="item.value">{{item.label}}</Option>
                             </Select>
                         </div>
                         <div v-if="obj.classification === 'store' && obj.customParam === '距离' && obj.customValue > 0" class="opration" style="display: inline-block;">
                             <Select v-model="obj.numCompareSymbol" style="width:90px" :class="{error:error.numCompareSymbol}" transfer @on-change="changeOperation">
-                                <Option v-for="item in newData.operationList" :value="item.value" :key="item.value">{{item.label}}</Option>
+                                <Option v-for="item in newData.operationList || []" :value="item.value" :key="item.value">{{item.label}}</Option>
                             </Select>
                             <div class="r">
                                 <Input v-model.number="obj.num" placeholder="-" style="width: 60px" :class="{error:error.num}"></Input><span>个</span>
@@ -57,12 +57,12 @@
                         <div v-if="obj.classification === 'store' && obj.customParam !=='距离' && obj.customParam !=='' && customShow" style="display: inline-block;">
                             <!-- 选我的门店,未选择距离,多选 -->
                             <Select v-model="obj.customValue" multiple :style="'width:'+newData.customList.length*80+'px;max-width:200px;'" :class="{error:error.customValue}" transfer @on-change="changeCustom">
-                                <Option v-for="item in newData.customList" :value="item" :key="item">{{item}}</Option>
+                                <Option v-for="item in newData.customList || []" :value="item" :key="item">{{item}}</Option>
                             </Select>
                         </div>
                         <div class="myshop" v-if="obj.classification === 'store' && obj.customParam !=='距离' && obj.customParam !=='' && !customShow" style="display: inline-block;">
                             <Select v-model="obj.customSymbol" style="width:90px" :class="{error:error.customSymbol}" transfer @on-change="changeCustomSymbol">
-                                <Option v-for="item in newData.operationList" :value="item.value" :key="item.value">{{item.label}}</Option>
+                                <Option v-for="item in newData.operationList || []" :value="item.value" :key="item.value">{{item.label}}</Option>
                             </Select>
                             <!-- 选我的门店,未选择距离,输入框 -->
                             <Input class="customValue" v-model.number="obj.customValue" :class="{error:error.customValue}" placeholder="0" style="width: 60px"></Input>
@@ -70,7 +70,7 @@
                     </template>
                     <!-- 选择增益排斥品牌 -->
                     <template>
-                        <div class="zengyi" v-if="obj.classification.length >0 && obj.classification !== 'store' && obj.classification !== 'poi'">
+                        <div class="zengyi" v-if="obj.classification[0] && obj.classification.length >0 && obj.classification !== 'store' && obj.classification !== 'poi'">
                             <div class="distance">
                                 <div class="l">
                                     <span>距离</span>
@@ -78,14 +78,14 @@
                                 </div>
                                 <div class="r">
                                     <Select v-model="obj.distance" style="width:90px" :class="{error:error.distance}" transfer @on-change="changeDistanceM">
-                                        <Option v-for="item in newData.distanceMList" :value="item.value" :key="item.value">{{item.label}}</Option>
+                                        <Option v-for="item in newData.distanceMList || []" :value="item.value" :key="item.value">{{item.label}}</Option>
                                     </Select>
                                 </div>
                             </div>
                         </div>
-                        <div v-if="obj.classification.length >0 && obj.classification !== 'store' && obj.classification !== 'poi' && obj.distance !== 0" class="opration" style="display: inline-block;">
+                        <div v-if="obj.classification[0] && obj.classification.length >0 && obj.classification !== 'store' && obj.classification !== 'poi' && obj.distance !== 0" class="opration" style="display: inline-block;">
                             <Select v-model="obj.numCompareSymbol" style="width:90px" :class="{error:error.numCompareSymbol}" transfer @on-change="changeOperation">
-                                <Option v-for="item in newData.operationList" :value="item.value" :key="item.value">{{item.label}}</Option>
+                                <Option v-for="item in newData.operationList || []" :value="item.value" :key="item.value">{{item.label}}</Option>
                             </Select>
                             <div class="r">
                                 <Input v-model.number="obj.num" placeholder="-" style="width: 60px" :class="{error:error.num}"></Input><span>个</span>
