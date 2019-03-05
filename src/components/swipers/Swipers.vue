@@ -1,11 +1,11 @@
 <template>
-    <div class="td-swipers" ref="swipers">
+    <div class="td-swipers">
         <div class="swipers-box">
             <div class="swiper-main">
                 <div class="swiper-nav">
                     <slot name="nav"></slot>
                 </div>
-                <div class="swiper-content" :class="name" ref="panes">
+                <div class="swiper-content" :class="titleName" ref="panes">
                     <template>
                         <Spin size="large" fix v-show="spinShow"></Spin>
                     </template>
@@ -30,7 +30,7 @@ export default {
     data() {
         return {
             nodeArray: [],
-            name: '',
+            titleName: '',
             spinShow: false
         }
     },
@@ -60,13 +60,14 @@ export default {
                 }
             });
             this.nodeArray = array;
-
             let instance = array[0].componentInstance;
-            this.name = instance.name;
+            this.titleName = instance.name;
             instance.swiperOpen();
+            return array;
         },
         open(name) {
-            this.name = name;
+            this.titleName = name;
+
             this.nodeArray.map(item => {
                 item.componentInstance.swiperClose();
                 if (item.componentInstance.name === name) {
@@ -80,6 +81,7 @@ export default {
 </script>
 <style>
 .td-swipers {
+    position: relative;
     .swipers-box {
         width: 336px;
         position: absolute;
