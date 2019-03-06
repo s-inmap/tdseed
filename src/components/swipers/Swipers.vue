@@ -1,11 +1,11 @@
 <template>
-    <div class="td-swipers">
+    <div class="td-swipers" :class="titleName">
         <div class="swipers-box">
             <div class="swiper-main">
                 <div class="swiper-nav">
                     <slot name="nav"></slot>
                 </div>
-                <div class="swiper-content" :class="titleName" ref="panes">
+                <div class="swiper-content" ref="panes">
                     <template>
                         <Spin size="large" fix v-show="spinShow"></Spin>
                     </template>
