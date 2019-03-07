@@ -54,10 +54,18 @@ export default {
                 conditionGroups: []
             },
             isRelation: 'intersection',
+            newData: {}
         }
     },
     computed: {},
-    watch: {},
+    watch: {
+        'data': {
+            handler(newVal, val) {
+                this.newData = this.data;
+            },
+            deep: true
+        }
+    },
     components: {
         singleCondition
     },
