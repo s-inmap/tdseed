@@ -212,14 +212,19 @@ export default {
         }
     },
     computed: {},
-    watch: {},
+    watch: {
+        'data': {
+            handler(newVal, val) {
+                this.newData = Object.assign({}, this.data, this.basicData);
+            },
+            deep: true
+        }
+    },
     components: {},
     created() {},
     activated() {},
     deactivated() {},
-    mounted() {
-        this.newData = Object.assign({}, this.data, this.basicData);
-    },
+    mounted() {},
     updated() {},
     methods: {
         changeType() {
@@ -231,15 +236,17 @@ export default {
             this.validType();
 
             //https://jira.tendcloud.com/browse/SLBS-797
-            this.newData.custom.map(item => {
-                if (item.class === 'enum') {
-                    if (item.list.length === 0) {
-                        item.disabled = true;
-                    } else {
-                        item.disabled = false;
+            if (this.newData.custom) {
+                this.newData.custom.map(item => {
+                    if (item.class === 'enum') {
+                        if (item.list.length === 0) {
+                            item.disabled = true;
+                        } else {
+                            item.disabled = false;
+                        }
                     }
-                }
-            })
+                })
+            }
         },
         changeCascader(val) {
             this.obj.type = val.join(',');
@@ -296,7 +303,7 @@ export default {
             if (val === '距离') {
                 this.obj.customSymbol = '=';
             }
-            if (val !== '距离') {
+            if (val !== '距离' && this.newData.custom) {
                 this.newData.custom.map(item => {
                     if (item.class === 'enum' && val === item.key) {
                         this.customShow = true;

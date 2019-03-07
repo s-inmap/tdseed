@@ -20,9 +20,8 @@ export default {
             conditionData: {}
         }
     },
-    mounted() {
-        this.mergeObject()
-    },
+    created() {},
+    mounted() {},
     methods: {
         async mergeObject() {
             try {
@@ -40,7 +39,7 @@ export default {
                     custom: data,
                     installation: data1
                 });
-                console.log('1',this.conditionData)
+                console.log('例子', this.conditionData)
             } catch (e) {
                 // statements
                 console.log(e);
@@ -66,6 +65,8 @@ export default {
             this.$refs['selectGroup'].addGroup();
             this.visible = false;
             this.$emit('on-condition');
+
+            this.mergeObject();
         },
         getRecommendListPromise() {
             //获取某用户的推荐任务列表
