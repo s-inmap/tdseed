@@ -121,7 +121,13 @@ export default {
             default: function() {
                 return [];
             }
-        }
+        },
+        value: {
+            type: Object,
+            default: function() {
+                return {};
+            }
+        },
     },
     data() {
         return {
@@ -215,7 +221,8 @@ export default {
     watch: {
         'data': {
             handler(newVal, val) {
-                this.newData = Object.assign({}, this.data, this.basicData);
+                //请求过后
+                this.newData = Object.assign({}, newVal, this.basicData);
             },
             deep: true
         }
@@ -224,9 +231,35 @@ export default {
     created() {},
     activated() {},
     deactivated() {},
-    mounted() {},
+    mounted() {
+        this.newData = Object.assign({}, this.data, this.basicData);
+        this.twoWayBinding();
+    },
     updated() {},
     methods: {
+        twoWayBinding() {
+            //数据绑定
+            if (this.value) {
+                this.obj.classification = this.value.classification;
+                if (this.value.classification === 'poi') {
+                    this.obj.installation = this.value.type.split(',');
+                    this.obj.distance = this.value.distance;
+                    this.obj.numCompareSymbol = this.value.numCompareSymbol;
+                    this.obj.num = this.value.num;
+                }
+                if (this.value.classification === 'store') {
+                    this.obj.customParam = '距离';
+                    this.obj.customValue = this.value.customValue;
+                    this.obj.numCompareSymbol = this.value.numCompareSymbol;
+                    this.obj.num = this.value.num;
+                }
+                if (this.value.classification !== 'poi' && this.value.classification !== 'store') {
+                    this.obj.distance = this.value.distance;
+                    this.obj.numCompareSymbol = this.value.numCompareSymbol;
+                    this.obj.num = this.value.num;
+                }
+            }
+        },
         changeType() {
             this.$emit('on-change', {
                 index: this.index,

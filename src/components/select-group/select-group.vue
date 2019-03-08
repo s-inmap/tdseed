@@ -1,8 +1,8 @@
 <template>
     <div class="td-selectgroup">
         <div class="group" v-for="(item,index) in count" :key="item.id" :class="{super:item.list.length > 1}">
-            <!-- index代表組， -->
-            <single-condition v-if="item.list[0]" ref="slction" v-for="(x,y) in item.list" :key="x.id" :index="[index,y]" :data="data" @on-plus="plusCondition" @on-minus="minusCondition" @on-change="changeCondition" class="and" :class="{last:y===item.list.length-1,or:isRelation === 'union'}"></single-condition>
+            <!-- index代表組，目前只有0，y值决定了condition数量 -->
+            <single-condition v-if="item.list[0]" v-model="filters.conditionGroups[0].conditions[y]" ref="slction" v-for="(x,y) in item.list" :key="x.id" :index="[index,y]" :data="data" @on-plus="plusCondition" @on-minus="minusCondition" @on-change="changeCondition" class="and" :class="{last:y===item.list.length-1,or:isRelation === 'union'}"></single-condition>
             <template v-if="item.list[0] && item.list.length > 1">
                 <div class="relation" @click="toggleRelation(index)">
                     <span class="intersection" :class="{active:isRelation==='intersection'}" ref="relation">交</span>
@@ -24,6 +24,12 @@ export default {
     name: 'select-group',
     props: {
         data: {
+            type: Object,
+            default: function() {
+                return {};
+            }
+        },
+        value: {
             type: Object,
             default: function() {
                 return {};
@@ -62,6 +68,37 @@ export default {
         'data': {
             handler(newVal, val) {
                 this.newData = this.data;
+            },
+            deep: true
+        },
+        value: {
+            handler(newVal, val) {
+                if (newVal) {
+                    //增加count
+                    this.addGroup();
+                    let params = JSON.parse(newVal.params);
+
+                    //匹配v-model
+                    let c = this.filters['conditionGroups'][0],
+                        p = params['conditionGroups'][0],
+                        len = p['conditions'].length;
+
+                    for (let i = 0; i <= len - 1; i++) {
+                        this.filters['conditionGroups'][0]['conditions'].push(p.conditions[i]);
+                        if (len > 1 && i !== len - 1) {
+                            this.plusCount();
+                        }
+                    }
+
+                    if (p.relation === 'intersection') {
+                        this.isRelation = 'intersection';
+                        c['relation'] = 'and';
+                    }
+                    if (p.relation === 'union') {
+                        this.isRelation = 'union';
+                        c['relation'] = 'or';
+                    }
+                }
             },
             deep: true
         }
@@ -128,6 +165,13 @@ export default {
                 f['relation'] = 'and';
             }
             this.$emit('on-plus');
+        },
+        plusCount() {
+            let item = this.count[0].list || [];
+
+            item.push({
+                id: utils.random()
+            });
         },
         toggleRelation() {
             if (this.isRelation === 'intersection') {
