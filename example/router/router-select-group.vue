@@ -1,12 +1,12 @@
 <template>
     <div class='ex-select-group'>
         <div v-if="visible">
-            <!--  <Button type="primary" class="add" style="width:134px" @click="addCondition">
-                <Icon type="plus-round"></Icon>添加筛选条件
-            </Button> -->
-            <Button type="primary" class="add" style="width:134px" @click="edit">
+             <Button type="primary" class="add" style="width:134px" @click="addCondition">
                 <Icon type="plus-round"></Icon>添加筛选条件
             </Button>
+            <!-- <Button type="primary" class="add" style="width:134px" @click="edit">
+                <Icon type="plus-round"></Icon>添加筛选条件
+            </Button> -->
         </div>
         <select-group ref="selectGroup" v-model="modelData" :data="conditionData" @on-minus="onMinus"></select-group>
         <Button type="primary" class="submit" :class="{disabled:visible}" @click="submit">开始筛选</Button>

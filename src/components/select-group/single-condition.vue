@@ -239,7 +239,7 @@ export default {
     methods: {
         twoWayBinding() {
             //数据绑定
-            if (this.value) {
+            if (this.value && this.value.classification) {
                 this.obj.classification = this.value.classification;
                 if (this.value.classification === 'poi') {
                     this.obj.installation = this.value.type.split(',');
