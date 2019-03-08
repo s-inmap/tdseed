@@ -1,11 +1,14 @@
 <template>
     <div class='ex-select-group'>
         <div v-if="visible">
-            <Button type="primary" class="add" style="width:134px" @click="addCondition">
+            <!--  <Button type="primary" class="add" style="width:134px" @click="addCondition">
+                <Icon type="plus-round"></Icon>添加筛选条件
+            </Button> -->
+            <Button type="primary" class="add" style="width:134px" @click="edit">
                 <Icon type="plus-round"></Icon>添加筛选条件
             </Button>
         </div>
-        <select-group ref="selectGroup" :data="conditionData" @on-minus="onMinus"></select-group>
+        <select-group ref="selectGroup" v-model="modelData" :data="conditionData" @on-minus="onMinus"></select-group>
         <Button type="primary" class="submit" :class="{disabled:visible}" @click="submit">开始筛选</Button>
         <a href="javascript:void(0)" v-if='!visible' class="clear" @click="clearConditions">清空条件</a>
     </div>
@@ -17,11 +20,14 @@ export default {
     data() {
         return {
             visible: true,
-            conditionData: {}
+            conditionData: {},
+            modelData: {}
         }
     },
     created() {},
-    mounted() {},
+    mounted() {
+
+    },
     methods: {
         async mergeObject() {
             try {
@@ -66,6 +72,27 @@ export default {
             this.visible = false;
             this.$emit('on-condition');
 
+            this.mergeObject();
+        },
+        edit() {
+            this.modelData = {
+                brandId: 294,
+                createTime: null,
+                id: 3,
+                name: "fdfs",
+                // params: '{"brandId":294,"name":"fdfs","recommendationId":null,"city":"北京市","groupRelation":"and","conditionGroups":[{"relation":"","conditions":[{"classification":"poi","type":"汽车服务,洗车场","distance":100,"num":0,"numCompareSymbol":">","customParam":"","customValue":null,"customSymbol":""}]}]}',
+
+                // '{"brandId":294,"name":"fdfs","recommendationId":null,"city":"北京市","groupRelation":"and","conditionGroups":[{"relation":"","conditions":[{"classification":"poi","type":"汽车服务,洗车场","distance":300,"num":0,"numCompareSymbol":"<","customParam":"","customValue":300,"customSymbol":""},{"classification":"store","type":"","distance":300,"num":0,"numCompareSymbol":"<","customParam":"","customValue":300,"customSymbol":""}]}]}'
+
+                // '{"brandId":294,"name":"fdfs","recommendationId":null,"city":"北京市","groupRelation":"and","conditionGroups":[{"relation":"","conditions":[{"classification":"poi","type":"汽车服务,洗车场","distance":300,"num":0,"numCompareSymbol":"<","customParam":"","customValue":300,"customSymbol":""},{"classification":"store","type":"","distance":300,"num":0,"numCompareSymbol":"<","customParam":"","customValue":300,"customSymbol":""},{"classification":"store","type":"","distance":300,"num":0,"numCompareSymbol":"<","customParam":"","customValue":300,"customSymbol":""}]}]}'
+                params: '{"brandId":294,"name":"fdfs","recommendationId":null,"city":"北京市","groupRelation":"and","conditionGroups":[{"relation":"","conditions":[{"classification":"poi","type":"汽车服务,洗车场","distance":100,"num":0,"numCompareSymbol":">","customParam":"","customValue":null,"customSymbol":""}]}]}',
+                result: null,
+                status: "SUCCESS",
+                userId: 10019
+            }
+
+            // this.$refs['selectGroup'].addGroup();
+            this.visible = false;
             this.mergeObject();
         },
         getRecommendListPromise() {
