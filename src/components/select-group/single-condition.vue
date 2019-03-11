@@ -242,6 +242,7 @@ export default {
             if (this.value && this.value.classification) {
                 this.obj.classification = this.value.classification;
                 if (this.value.classification === 'poi') {
+                    this.obj.type = this.value.type;
                     this.obj.installation = this.value.type.split(',');
                     this.obj.distance = this.value.distance;
                     this.obj.numCompareSymbol = this.value.numCompareSymbol;

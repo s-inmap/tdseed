@@ -67,11 +67,11 @@ export default {
     watch: {
         'data': {
             handler(newVal, val) {
-                this.newData = this.data;
+                this.newData = newVal;
             },
             deep: true
         },
-        value: {
+        'value': {
             handler(newVal, val) {
                 if (newVal) {
                     //增加count

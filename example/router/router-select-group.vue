@@ -4,9 +4,9 @@
              <Button type="primary" class="add" style="width:134px" @click="addCondition">
                 <Icon type="plus-round"></Icon>添加筛选条件
             </Button>
-            <!-- <Button type="primary" class="add" style="width:134px" @click="edit">
-                <Icon type="plus-round"></Icon>添加筛选条件
-            </Button> -->
+            <Button type="primary" class="add" style="width:134px" @click="edit">
+                <Icon type="plus-round"></Icon>编辑
+            </Button>
         </div>
         <select-group ref="selectGroup" v-model="modelData" :data="conditionData" @on-minus="onMinus"></select-group>
         <Button type="primary" class="submit" :class="{disabled:visible}" @click="submit">开始筛选</Button>
@@ -75,6 +75,9 @@ export default {
             this.mergeObject();
         },
         edit() {
+            // this.$refs['selectGroup'].addGroup();
+            this.visible = false;
+            this.mergeObject();
             this.modelData = {
                 brandId: 294,
                 createTime: null,
@@ -85,15 +88,11 @@ export default {
                 // '{"brandId":294,"name":"fdfs","recommendationId":null,"city":"北京市","groupRelation":"and","conditionGroups":[{"relation":"","conditions":[{"classification":"poi","type":"汽车服务,洗车场","distance":300,"num":0,"numCompareSymbol":"<","customParam":"","customValue":300,"customSymbol":""},{"classification":"store","type":"","distance":300,"num":0,"numCompareSymbol":"<","customParam":"","customValue":300,"customSymbol":""}]}]}'
 
                 // '{"brandId":294,"name":"fdfs","recommendationId":null,"city":"北京市","groupRelation":"and","conditionGroups":[{"relation":"","conditions":[{"classification":"poi","type":"汽车服务,洗车场","distance":300,"num":0,"numCompareSymbol":"<","customParam":"","customValue":300,"customSymbol":""},{"classification":"store","type":"","distance":300,"num":0,"numCompareSymbol":"<","customParam":"","customValue":300,"customSymbol":""},{"classification":"store","type":"","distance":300,"num":0,"numCompareSymbol":"<","customParam":"","customValue":300,"customSymbol":""}]}]}'
-                params: '{"brandId":294,"name":"fdfs","recommendationId":null,"city":"北京市","groupRelation":"and","conditionGroups":[{"relation":"","conditions":[{"classification":"poi","type":"汽车服务,洗车场","distance":100,"num":0,"numCompareSymbol":">","customParam":"","customValue":null,"customSymbol":""}]}]}',
+                params: '{"brandId":264,"name":"eee","recommendationId":null,"city":"北京市","groupRelation":"and","conditionGroups":[{"relation":"","conditions":[{"classification":"poi","type":"汽车服务,洗车场","distance":100,"num":0,"numCompareSymbol":">","customParam":"","customValue":null,"customSymbol":""}]}]}',
                 result: null,
                 status: "SUCCESS",
                 userId: 10019
             }
-
-            // this.$refs['selectGroup'].addGroup();
-            this.visible = false;
-            this.mergeObject();
         },
         getRecommendListPromise() {
             //获取某用户的推荐任务列表
