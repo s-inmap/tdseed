@@ -1,8 +1,8 @@
 <template>
-    <div id="td-filterCity" class="td-filterCity">
+    <div id="td-filterCity" class="td-filter-city">
         <div class="position">
             <Poptip placement="bottom-end" width="220" v-model="visible" @on-popper-show="onPopperShow">
-                <div class="cityPop hoverPop">
+                <div class="city-pop hover-pop">
                     <i class="icon-funnel"></i>选择城市
                 </div>
                 <div class="api" slot="content">
@@ -62,13 +62,13 @@ export default {
 
 </script>
 <style>
-.td-filterCity {
+.td-filter-city {
     position: relative;
     .position {
         position: absolute;
         top: 0;
         left: 0;
-        .cityPop {
+        .city-pop {
             line-height: 32px;
             width: 104px;
             cursor: pointer;
