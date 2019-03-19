@@ -1,0 +1,58 @@
+<template>
+    <div class='ex-bar-table'>
+        <bar-table title="学历" :data="purchasePower" :loading="loading" :colors="color"></bar-table>
+    </div>
+</template>
+<script>
+export default {
+    data() {
+        return {
+            color: ['#34508C', '#2B85E4', '#1CB6FB', '#1BDBF5', '#80F2DA', '#C1F9D6'],
+            loading: false,
+            purchasePower: [{
+                    "key": "土豪",
+                    "value": 3.94
+                },
+                {
+                    "key": "高级白领",
+                    "value": 66.97
+                },
+                {
+                    "key": "小白领",
+                    "value": 27.04
+                },
+                {
+                    "key": "蓝领",
+                    "value": 2.01
+                },
+                {
+                    "key": "收入很少",
+                    "value": 0.04
+                },
+                {
+                    "key": "未知",
+                    "value": 0
+                }
+            ]
+        }
+    },
+    created() {},
+    mounted() {
+
+    },
+    methods: {
+
+    }
+}
+
+</script>
+<style scoped>
+
+
+</style>
+<style>
+.ex-bar-table {
+    width: 300px;
+}
+
+</style>

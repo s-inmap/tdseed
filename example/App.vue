@@ -16,6 +16,7 @@
                 <router-link to="/basic-tab">basic-tab</router-link>
                 <router-link to="/basic-bar">basic-bar</router-link>
                 <router-link to="/top-rank">top-rank</router-link>
+                <router-link to="/bar-table">bar-table</router-link>
             </nav>
             <div class="components">
                 <router-view/>
