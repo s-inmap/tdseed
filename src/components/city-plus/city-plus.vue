@@ -3,7 +3,7 @@
         <slot name="search-city"></slot>
         <slot name="recent-city"></slot>
         <div class="select-city">
-            <div class="letterList" ref="letterList" @click="letterChange">
+            <div class="letter-list" ref="letterList" @click="letterChange">
                 <span>ABCD</span>
                 <span>EFGH</span>
                 <span>JKLM</span>
@@ -11,10 +11,10 @@
                 <span>TUVWX</span>
                 <span>YZ</span>
             </div>
-            <div class="list">
+            <div class="city-list">
                 <div class="row" v-for="(item,index) in showCityArray" :key='index'>
-                    <div class="cityLabel">{{item[0]}}</div>
-                    <div class="cityLabelList">
+                    <div class="city-label">{{item[0]}}</div>
+                    <div class="city-label-list">
                         <div :class="['city',allowedCity.includes(subItem.name) === true ? '' :'not-allowed']" v-for="subItem in item[1]" :key='subItem.name' @click="changeCity(subItem)">{{subItem.name}}</div>
                     </div>
                 </div>
@@ -154,7 +154,7 @@ export default {
         }
     }
     .select-city {
-        .letterList {
+        .letter-list {
             margin: 0 16px;
             /*padding: 16px ;*/
             display: flex;
@@ -172,13 +172,13 @@ export default {
                 color: var(--link-color);
             }
         }
-        .list {
+        .city-list {
             height: auto;
             padding: 16px;
             .row {
                 display: flex;
                 margin-bottom: 8px;
-                .cityLabel {
+                .city-label {
                     width: 10px;
                     font-size: 14px;
                     color: var(--color-icon);
@@ -187,7 +187,7 @@ export default {
                     line-height: 20px;
                     margin-right: 20px;
                 }
-                .cityLabelList {
+                .city-label-list {
                     .city {
                         float: left;
                         font-size: 12px;

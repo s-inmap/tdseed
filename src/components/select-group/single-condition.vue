@@ -95,7 +95,7 @@
                 </div>
             </template>
         </div>
-        <div class="handler">
+        <div class="condition-handler">
             <a href="javascript:void(0)" class="subtraction" @click="subtraction">
                 <Icon type="minus-round"></Icon>
             </a>
@@ -633,7 +633,7 @@ export default {
             }
         }
     }
-    .handler {
+    .condition-handler {
         white-space: nowrap;
         .subtraction,
         .addition {

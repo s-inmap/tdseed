@@ -1,5 +1,5 @@
 <template>
-    <div class="td-mulChooser">
+    <div class="td-mul-chooser">
         <div class="chooser-select">
             <span class="all" :class="{allActive:allActive}" @click="selectAll">全选</span>
             <span class="cancel" :class="{cancelActive:cancelActive}" @click="cancelAll">取消选择</span>
