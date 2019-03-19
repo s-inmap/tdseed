@@ -12,6 +12,10 @@
                 <router-link to="/select-group">select-group</router-link>
                 <router-link to="/city-plus">city-plus</router-link>
                 <router-link to="/swipers">swipers</router-link>
+                <router-link to="/basic-grid">basic-grid</router-link>
+                <router-link to="/basic-tab">basic-tab</router-link>
+                <router-link to="/basic-bar">basic-bar</router-link>
+                <router-link to="/top-rank">top-rank</router-link>
             </nav>
             <div class="components">
                 <router-view/>

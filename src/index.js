@@ -10,6 +10,10 @@ import TablePlus from '@/components/table-plus'
 import SelectGroup from '@/components/select-group'
 import CityPlus from '@/components/city-plus'
 import Swipers from '@/components/swipers'
+import BasicGrid from '@/components/basic-grid'
+import BasicTab from '@/components/basic-tab'
+import BasicBar from '@/components/basic-bar'
+import TopRank from '@/components/top-rank'
 Vue.use(iView)
 
 const components = {
@@ -21,7 +25,11 @@ const components = {
     SelectGroup,
     CityPlus,
     Swipers,
-    SwiperPane: Swipers.SwiperPane
+    SwiperPane: Swipers.SwiperPane,
+    BasicGrid,
+    BasicTab,
+    BasicBar,
+    TopRank
 }
 
 const tdseed = {
@@ -51,7 +59,11 @@ export default {
     SelectGroup,
     CityPlus,
     Swipers,
-    SwiperPane: Swipers.SwiperPane
+    SwiperPane: Swipers.SwiperPane,
+    BasicGrid,
+    BasicTab,
+    BasicBar,
+    TopRank
 };
 
 const API = {
