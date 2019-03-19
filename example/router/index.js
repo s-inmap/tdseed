@@ -63,6 +63,11 @@ export default new Router({
             path: '/top-rank',
             name: 'top-rank',
             component: (resolve) => require(['./ex-top-rank.vue'], resolve)
+        },
+        {
+            path: '/bar-table',
+            name: 'bar-table',
+            component: (resolve) => require(['./ex-bar-table.vue'], resolve)
         }
     ]
 })

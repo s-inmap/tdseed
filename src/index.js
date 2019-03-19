@@ -14,6 +14,7 @@ import BasicGrid from '@/components/basic-grid'
 import BasicTab from '@/components/basic-tab'
 import BasicBar from '@/components/basic-bar'
 import TopRank from '@/components/top-rank'
+import BarTable from '@/components/bar-table'
 Vue.use(iView)
 
 const components = {
@@ -29,7 +30,8 @@ const components = {
     BasicGrid,
     BasicTab,
     BasicBar,
-    TopRank
+    TopRank,
+    BarTable
 }
 
 const tdseed = {
@@ -63,7 +65,8 @@ export default {
     BasicGrid,
     BasicTab,
     BasicBar,
-    TopRank
+    TopRank,
+    BarTable
 };
 
 const API = {
