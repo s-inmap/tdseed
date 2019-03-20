@@ -1,5 +1,5 @@
 <template>
-    <transition name="slide-fade">
+    <transition :name="animateName">
         <div class="swiper-pane" v-if="show" :ref="name">
             <slot></slot>
         </div>
@@ -19,14 +19,20 @@ export default {
     },
     data() {
         return {
-            show: false
+            show: false,
+            animateName: ''
         }
     },
     computed: {},
     watch: {},
     components: {},
     created() {},
-    mounted() {},
+    mounted() {
+        this.animateName = '';
+        setTimeout(() => {
+            this.animateName = 'slide-fade'
+        }, 1500)
+    },
     activated() {},
     deactivated() {},
     methods: {
@@ -38,6 +44,7 @@ export default {
         }
     }
 }
+
 </script>
 <style>
 /**动画效果**/
@@ -76,7 +83,7 @@ export default {
 .slide1-fade-leave-to {
     transform: translateX(-100%) translateZ(0px);
 }
-.swiper-pane{
+.swiper-pane {
     height: 100%
 }
 .swiper-pane {
@@ -88,6 +95,9 @@ export default {
     border: 0;
     background: #fff;
 }
+
 </style>
 <style>
+
+
 </style>
