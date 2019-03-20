@@ -107,9 +107,7 @@ export default {
     .td-content {
         padding: 12px;
     }
-    .td-content-graph {
-        padding: 16px;
-    }
+    .td-content-graph {}
 }
 
 </style>
