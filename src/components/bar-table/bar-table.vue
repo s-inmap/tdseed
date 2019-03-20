@@ -14,18 +14,20 @@
                     </div>
                 </div>
                 <div class="info" v-show="!loading&&noDataMessage===''">
-                    <div class="col-1">
-                        <span>当前区域</span>
-                        <span v-for="(item,index) in data">{{item.value}}%</span>
+                    <div v-for="(item,index) in data" class="item">
+                        <div class="col-1">
+                            <span class="title" v-if='index === 0'>当前区域</span>
+                            <span class="value">{{item.value||0}}%</span>
+                        </div>
+                        <div class="col-2">
+                            <span class="title" v-if='index === 0'>全国</span>
+                            <span class="value">{{item.city||0}}%</span>
+                        </div>
+                        <div class="col-3">
+                            <span class="title" v-if='index === 0'>TGI</span>
+                            <span class="value">{{item.cityTGI||0}}</span>
+                        </div>
                     </div>
-                    <!-- <div class="col-2">
-                        <span>全国</span>
-                        <span v-for="(item,index) in data">{{item.city||0}}%</span>
-                    </div>
-                    <div class="col-3">
-                        <span>TGI</span>
-                        <span v-for="(item,index) in data">{{item.cityTGI||0}}</span>
-                    </div> -->
                 </div>
             </div>
             <div class="nodata" v-show="!loading&&noDataMessage!==''">{{noDataMessage}}</div>
@@ -142,11 +144,9 @@ export default {
                 }
             }
             .info {
-                display: inline-block;
                 /*width: 183px;*/
                 height: 100%;
-                letter-spacing: -4px;
-                overflow: hidden;
+
                 .col-1,
                 .col-2,
                 .col-3 {
@@ -156,25 +156,27 @@ export default {
                     vertical-align: top;
                     letter-spacing: normal;
                     line-height: 16px;
-                    /*border-right: 1px solid rgba(23, 35, 61, .10);*/
-                    span {
+                    border-right: 1px solid rgba(23, 35, 61, .10);
+                    .title {
                         display: block;
-                        padding-bottom: 25px;
-                        font-family: HelveticaNeue;
-                        font-size: 13px;
-                        color: rgba(23, 35, 61, 0.75);
-                    }
-                    span:first-child {
-                        padding: 0 0 27px 0px;
+                        padding-bottom: 27px;
                         font-family: PingFangSC-Regular;
                         font-size: 12px;
-                        color: rgba(23, 35, 61, 0.75);
+                        color: var(--color-detail);
                     }
-                    span:last-child {
-                        padding-bottom: 0;
+                    .value {
+                        display: block;
+                        padding: 0 0 25px 0px;
+                        font-family: HelveticaNeue;
+                        font-size: 13px;
+                        color: var(--color-detail);
                     }
                 }
-
+                .item:last-child {
+                    span {
+                        padding: 0;
+                    }
+                }
                 .col-1 {
                     width: 64px;
                 }
