@@ -52,7 +52,16 @@ export default {
 </style>
 <style>
 .ex-bar-table {
-    width: 300px;
+    width: 400px;
+    .td-bar-table .main .column .info {
+        .col-1 {
+            border: 0;
+        }
+        .col-2,
+        .col-3 {
+            display: none;
+        }
+    }
 }
 
 </style>
