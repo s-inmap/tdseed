@@ -15,8 +15,6 @@
 ## NPM 安装
 ``` bash
 $ npm install tdseed --save
-
-$ npm run dev
 ```
 
 
