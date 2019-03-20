@@ -6,6 +6,16 @@
   "author": "huiyin li <lihuiyin128@163.com>",
   "private": false,
   "main": "dist/tdseed.js",
+  "keywords": [
+        "iview",
+        "vue",
+        "vue.js",
+        "component",
+        "components",
+        "ui",
+        "framework",
+        "map"
+  ],
   "files": [
     "dist",
     "src"
@@ -81,6 +91,7 @@
   "bugs": {
     "url": "https://github.com/s-inmap/tdseed/issues"
   },
+  "license": "MIT",
   "engines": {
     "node": ">=8.9.1",
     "npm": ">=5.5.1"
