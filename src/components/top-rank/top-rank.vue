@@ -2,14 +2,17 @@
     <div class='td-top-rank'>
         <div class="main">
             <Spin size="large" fix v-show="loading"></Spin>
-            <div class="column">
+            <div class="td-column">
                 <div v-for="(item,index) in data" class="rank">
                     <div class="left">
                         <div class="number">{{index + 1}}</div>
                         <div>{{item.key}}</div>
                     </div>
                     <div class="right">
-                        <basic-bar :value="item.value"></basic-bar>
+                        <span class="td-column-value">{{item.value}}%</span>
+                        <div class="td-column-bar">
+                            <basic-bar :value="item.value"></basic-bar>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -73,7 +76,7 @@ export default {
             letter-spacing: normal;
             font-size: 13px;
         }
-        .column {
+        .td-column {
             .rank {
                 display: flex;
                 align-items: center;
@@ -94,7 +97,15 @@ export default {
                     }
                 }
                 .right {
-                    width: 140px;
+                    display: flex;
+                    align-items: center;
+                    .td-column-value {
+                        font-size: 13px;
+                        margin-right: 10px;
+                    }
+                    .td-column-bar {
+                        width: 140px;
+                    }
                 }
             }
             .rank:nth-child(1) {
