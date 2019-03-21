@@ -4,7 +4,7 @@
             <Spin size="large" fix v-show="loading"></Spin>
             <div class="column">
                 <div class="chart" v-show="!loading&&noDataMessage===''">
-                    <span class="title">{{title}}</span>
+                    <span class="title">{{banner[0]}}</span>
                     <div v-for="(item,index) in data" class="col" :class='"col-"+(index+1)'>
                         <span :title="item.key">{{item.key}}</span>
                         <div class="bar">
@@ -16,15 +16,15 @@
                 <div class="info" v-show="!loading&&noDataMessage===''">
                     <div v-for="(item,index) in data" class="item">
                         <div class="col-1">
-                            <span class="title" v-if='index === 0'>当前区域</span>
+                            <span class="title" v-if='index === 0'>{{banner[1]}}</span>
                             <span class="value">{{item.value||0}}%</span>
                         </div>
                         <div class="col-2">
-                            <span class="title" v-if='index === 0'>全国</span>
+                            <span class="title" v-if='index === 0'>{{banner[2]}}</span>
                             <span class="value">{{item.city||0}}%</span>
                         </div>
                         <div class="col-3">
-                            <span class="title" v-if='index === 0'>TGI</span>
+                            <span class="title" v-if='index === 0'>{{banner[3]}}</span>
                             <span class="value">{{item.cityTGI||0}}</span>
                         </div>
                     </div>
@@ -66,7 +66,8 @@ export default {
     data() {
         return {
             noDataMessage: '',
-            BGColors: []
+            BGColors: [],
+            banner:[]
         }
     },
     watch: {
@@ -87,6 +88,7 @@ export default {
         } else {
             this.BGColors = this.colors;
         }
+        this.banner = this.title.split('|');
     },
     computed: {},
     methods: {}

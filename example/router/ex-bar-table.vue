@@ -1,6 +1,6 @@
 <template>
     <div class='ex-bar-table'>
-        <bar-table title="学历" :data="purchasePower" :loading="loading" :colors="color"></bar-table>
+        <bar-table title="学历|当前区域|全国|TGI" :data="purchasePower" :loading="loading" :colors="color"></bar-table>
     </div>
 </template>
 <script>
@@ -53,7 +53,7 @@ export default {
 <style>
 .ex-bar-table {
     width: 400px;
-    .td-bar-table .main .column .info {
+    /*.td-bar-table .main .column .info {
         .col-1 {
             border: 0;
         }
@@ -61,7 +61,7 @@ export default {
         .col-3 {
             display: none;
         }
-    }
+    }*/
 }
 
 </style>
