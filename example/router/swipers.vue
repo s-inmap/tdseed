@@ -7,13 +7,13 @@
             <div slot="nav" class="top">
                 <h1>文章标题</h1>
             </div>
-            <SwiperPane name="mainPage">
+            <SwiperPane name="mainPage" animation="slide-in">
                 <div>one</div>
             </SwiperPane>
-            <SwiperPane name="filterPage">
+            <SwiperPane name="filterPage" animation="slide-out">
                 <div>two</div>
             </SwiperPane>
-            <SwiperPane name="resultPage">
+            <SwiperPane name="resultPage" animation="slide-in">
                 <div>three</div>
             </SwiperPane>
         </Swipers>
