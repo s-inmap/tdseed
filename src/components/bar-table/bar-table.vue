@@ -67,7 +67,7 @@ export default {
         return {
             noDataMessage: '',
             BGColors: [],
-            banner:[]
+            banner: []
         }
     },
     watch: {
@@ -96,116 +96,6 @@ export default {
 
 </script>
 <style>
-.td-bar-table {
-    width: 100%;
-    max-width: 600px;
-    min-width: 280px;
-    .main {
-        position: relative;
-        height: calc(100% - 22px - 24px);
-        min-height: 140px;
-        /*22= __head line-height:22+margin-top:24*/
-        letter-spacing: -4px;
-        .column {
-            display: flex;
-            justify-content: space-between;
-            .chart {
-                display: inline-block;
-                width: 218px;
-                vertical-align: top;
-                letter-spacing: normal;
-                .title {
-                    display: block;
-                    padding-bottom: 23px;
-                    font-family: PingFangSC-Regular;
-                    font-size: 12px;
-                    color: rgba(23, 35, 61, 0.75);
-                }
-                .col {
-                    padding-bottom: 8px;
-                    span {
-                        line-height: 22px;
-                        font-family: PingFangSC-Regular;
-                        font-size: 13px;
-                        color: #17233D;
-                        letter-spacing: 0;
-                        white-space: nowrap;
-                        text-overflow: ellipsis;
-                        overflow: hidden;
-                        display: inline-block;
-                        width: 218px;
-                    }
-                    .bar {
-                        width: 196px;
-                        .progress {
-                            height: 4px;
-                            margin-top: 4px;
-                            border-radius: 2px;
-                        }
-                    }
-                }
-            }
-            .info {
-                /*width: 183px;*/
-                height: 100%;
 
-                .col-1,
-                .col-2,
-                .col-3 {
-                    display: inline-block;
-                    width: auto;
-                    height: 100%;
-                    vertical-align: top;
-                    letter-spacing: normal;
-                    line-height: 16px;
-                    border-right: 1px solid rgba(23, 35, 61, .10);
-                    .title {
-                        display: block;
-                        padding-bottom: 27px;
-                        font-family: PingFangSC-Regular;
-                        font-size: 12px;
-                        color: var(--color-detail);
-                    }
-                    .value {
-                        display: block;
-                        padding: 0 0 25px 0px;
-                        font-family: HelveticaNeue;
-                        font-size: 13px;
-                        color: var(--color-detail);
-                    }
-                }
-                .item:last-child {
-                    span {
-                        padding: 0;
-                    }
-                }
-                .col-1 {
-                    width: 64px;
-                }
-                .col-2 {
-                    width: 74px;
-                    padding-left: 16px;
-                }
-                .col-3 {
-                    width: calc(100% - 65px - 75px);
-                    padding-left: 16px;
-                    border: 0;
-                    span {
-                        border-right: none;
-                    }
-                }
-            }
-        }
-        .nodata {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100%;
-            text-align: center;
-            letter-spacing: normal;
-            font-size: 13px;
-        }
-    }
-}
 
 </style>
