@@ -31,47 +31,10 @@
         }
     }
 }
-
-/**动画效果**/
-
-.slide-fade-enter-active {
-    /*flex-direction: row;*/
-    /*will-change: transform;*/
-    transition: transform .4s ease-in-out;
-}
-.slide-fade-leave-active {
-    /*flex-direction: row;*/
-    /*will-change: transform;*/
-    transition: transform .4s ease-in-out;
-}
-.slide-fade-enter {
-    transform: translateX(100%) translateZ(0px);
-}
-.slide-fade-leave-to {
-    transform: translateX(100%) translateZ(0px);
-    /*opacity: 0;*/
-}
-
-.slide1-fade-enter-active {
-    flex-direction: row;
-    will-change: transform;
-    transition: transform .4s ease-in-out;
-}
-.slide1-fade-leave-active {
-    flex-direction: row;
-    will-change: transform;
-    transition: transform .4s ease-in-out;
-}
-.slide1-fade-enter {
-    transform: translateX(-100%) translateZ(0px);
-}
-.slide1-fade-leave-to {
-    transform: translateX(-100%) translateZ(0px);
-}
-.swiper-pane {
+.td-swiper-pane {
     height: 100%
 }
-.swiper-pane {
+.td-swiper-pane {
     top: 0;
     left: 0;
     width: 100%;
@@ -79,4 +42,43 @@
     display: block;
     border: 0;
     background: #fff;
+}
+
+
+
+/**动画效果slide-in,slide-out**/
+
+.slide-in-enter-active {
+    /*flex-direction: row;*/
+    /*will-change: transform;*/
+    transition: transform .4s ease-in-out;
+}
+.slide-in-leave-active {
+    /*flex-direction: row;*/
+    /*will-change: transform;*/
+    transition: transform .4s ease-in-out;
+}
+.slide-in-enter {
+    transform: translateX(100%) translateZ(0px);
+}
+.slide-in-leave-to {
+    transform: translateX(100%) translateZ(0px);
+    /*opacity: 0;*/
+}
+
+.slide-out-enter-active {
+    flex-direction: row;
+    will-change: transform;
+    transition: transform .4s ease-in-out;
+}
+.slide-out-leave-active {
+    flex-direction: row;
+    will-change: transform;
+    transition: transform .4s ease-in-out;
+}
+.slide-out-enter {
+    transform: translateX(-100%) translateZ(0px);
+}
+.slide-out-leave-to {
+    transform: translateX(-100%) translateZ(0px);
 }

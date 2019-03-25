@@ -1,6 +1,6 @@
 <template>
     <transition :name="animateName">
-        <div class="swiper-pane" v-if="show" :ref="name">
+        <div class="td-swiper-pane" v-if="show" :ref="name">
             <slot></slot>
         </div>
     </transition>
@@ -15,7 +15,13 @@ export default {
             default: function() {
                 return '';
             }
-        }
+        },
+        animation: {
+            type: String,
+            default: function() {
+                return '';
+            }
+        },
     },
     data() {
         return {
@@ -30,8 +36,9 @@ export default {
     mounted() {
         this.animateName = '';
         setTimeout(() => {
-            this.animateName = 'slide-fade'
-        }, 1500)
+            this.animateName = this.animation || 'slide-in';
+        }, 1000)
+
     },
     activated() {},
     deactivated() {},
