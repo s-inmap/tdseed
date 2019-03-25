@@ -97,25 +97,8 @@ export default {
 
 </script>
 <style>
-@import '../../assets/css/table-plus/table-plus.css';
 
 </style>
 <style>
-.td-table-plus {
-    .page_container {
-        font-size: 14px !important;
-        .ivu-page-options-sizer {
-            width: 96px;
-        }
-        .ivu-select-selected-value {
-            font-size: 14px !important;
-        }
-    }
-
-    .ivu-table-filter-select-item {
-        font-size: 14px !important;
-        line-height: 22px;
-    }
-}
 
 </style>

@@ -129,10 +129,6 @@ export default {
 
 </script>
 <style>
-</style>
-<style>
-@import '../../assets/css/mul-chooser/mul-chooser.css';
 
-</style>
-<style>
+
 </style>

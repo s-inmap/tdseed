@@ -62,27 +62,6 @@ export default {
 
 </script>
 <style>
-.td-filter-city {
-    position: relative;
-    .position {
-        position: absolute;
-        top: 0;
-        left: 0;
-        .city-pop {
-            line-height: 32px;
-            width: 104px;
-            cursor: pointer;
-            text-align: center;
-            font-size: 14px;
-            color: var(--color-hover);
-        }
-        .ivu-poptip-body {
-            padding: 0;
-        }
-        .ivu-poptip-body-content {
-            overflow: hidden;
-        }
-    }
-}
+
 
 </style>

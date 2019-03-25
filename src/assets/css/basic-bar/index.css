@@ -1,0 +1,23 @@
+.td-basic-bar {
+    position: relative;
+    width: 100%;
+    color: rgba(255, 255, 255, .2);
+    height: 8px;
+    background: rgba(23, 35, 61, 0.10);
+    border-radius: 0;
+    .percent {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        background: #2D8CF0;
+        height: 8px;
+        border-radius: 0;
+    }
+}
+.td-mini-bar {
+    height: 4px;
+    .percent {
+        height: 4px;
+    }
+}

@@ -80,39 +80,7 @@ export default {
 
 </script>
 <style>
-.td-swipers {
-    position: relative;
-    .swipers-box {
-        width: 336px;
-        position: absolute;
-        top: 0;
-        left: 0;
-        background: #fff;
-        font-size: 14px;
-        @add-mixin shadow;
-        .swiper-main {
-            position: relative;
-            flex-direction: row;
-            will-change: transform;
-            overflow: hidden;
-        }
-        .swiper-nav {
-            height: 48px;
-            line-height: 48px;
-            position: relative;
-            color: var(--color-title);
-        }
-        .swiper-content {
-            background: #fff;
-            position: relative;
-            height: 200px;
-            .ivu-spin-fix {
-                background: #fff;
-                opacity: 0.6;
-            }
-        }
-    }
-}
+
 
 </style>
 <style>

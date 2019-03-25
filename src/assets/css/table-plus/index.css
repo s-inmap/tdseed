@@ -28,4 +28,13 @@
             float: right;
         }
     }
+    .page_container {
+        font-size: 14px;
+        .ivu-page-options-sizer {
+            width: 96px;
+        }
+        .ivu-select-selected-value {
+            font-size: 14px;
+        }
+    }
 }

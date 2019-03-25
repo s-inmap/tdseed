@@ -119,42 +119,6 @@ export default {
 
 </script>
 <style>
-@import '../../assets/css/filter-city/filter-city.css';
 
-</style>
-<style>
-.td-city-content {
-    .ivu-input {
-        padding: 4px 0 4px 34px;
-        height: 40px;
-        line-height: 40px;
-        border-radius: 0;
-        border-top-left-radius: 2px;
-        border-top-right-radius: 2px;
-        border: 0;
-    }
-    .ivu-poptip-body-content {
-        overflow: auto;
-    }
-    label {
-        .ivu-checkbox {
-            margin-right: 8px;
-        }
-    }
-    .ivu-select-dropdown-list {
-        height: auto;
-        max-height: 200px;
-    }
-    .search {
-        .ivu-select-item {
-            text-align: left;
-        }
-    }
-    .select_city_auto {
-        .ivu-input:focus {
-            box-shadow: none;
-        }
-    }
-}
 
 </style>
