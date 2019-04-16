@@ -39,11 +39,11 @@ export default {
             }
             if (map && this.y === true && this.x === false) {
                 let result = domHeight - (document.documentElement.clientHeight - top);
-
                 map.panBy(0, -result - this.offset);
 
+                let offset = this.offset;
                 let x = setTimeout(function() {
-                    dom.style.top = top - (result + this.offset) + 'px';
+                    dom.style.top = top - (result + offset) + 'px';
                     clearTimeout(x);
                 }, 200);
             }
@@ -51,8 +51,9 @@ export default {
                 let result = domWidth - (document.documentElement.clientWidth - left);
                 map.panBy(-result - this.offset, 0);
 
+                let offset = this.offset;
                 let y = setTimeout(function() {
-                    dom.style.left = left - (result + this.offset) + 'px';
+                    dom.style.left = left - (result + offset) + 'px';
                     clearTimeout(y);
                 }, 200);
             }
@@ -61,9 +62,10 @@ export default {
                 let x2 = domHeight - (document.documentElement.clientHeight - top);
                 map.panBy(-x1 - this.offset, -x2 - this.offset);
 
+                let offset = this.offset;
                 let z = setTimeout(function() {
-                    dom.style.left = left - (x1 + this.offset) + 'px';
-                    dom.style.top = top - (x2 + this.offset) + 'px';
+                    dom.style.left = left - (x1 + offset) + 'px';
+                    dom.style.top = top - (x2 + offset) + 'px';
                     clearTimeout(z);
                 }, 200);
             }
