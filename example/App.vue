@@ -34,7 +34,6 @@ export default {
 /*开发模式*/
 
 /*@import '../src/assets/css/main.css';*/
-@import 'iview/dist/styles/iview.css';
 
 </style>
 <style scoped>
