@@ -22,7 +22,7 @@ export default {
             names: [{
                 name: '天使之橙'
             }],
-            map: null
+            map: {}
         }
     },
     created() {
