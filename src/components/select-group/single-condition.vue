@@ -29,7 +29,7 @@
                                 <Option v-for="item in newData.operationList || []" :value="item.value" :key="item.value">{{item.label}}</Option>
                             </Select>
                             <div class="r">
-                                <Input v-model.number="obj.num" placeholder="-" style="width: 60px" :class="{error:error.num}"></Input><span>个</span>
+                                <Input v-model.number="obj.num" placeholder="-" style="width: 60px" :class="{error:error.num}" @on-change="changeInput"></Input><span>个</span>
                             </div>
                         </div>
                     </template>
@@ -51,7 +51,7 @@
                                 <Option v-for="item in newData.operationList || []" :value="item.value" :key="item.value">{{item.label}}</Option>
                             </Select>
                             <div class="r">
-                                <Input v-model.number="obj.num" placeholder="-" style="width: 60px" :class="{error:error.num}"></Input><span>个</span>
+                                <Input v-model.number="obj.num" placeholder="-" style="width: 60px" :class="{error:error.num}" @on-change="changeInput"></Input><span>个</span>
                             </div>
                         </div>
                         <div v-if="obj.classification === 'store' && obj.customParam !=='距离' && obj.customParam !=='' && customShow" style="display: inline-block;">
@@ -65,7 +65,7 @@
                                 <Option v-for="item in newData.operationList || []" :value="item.value" :key="item.value">{{item.label}}</Option>
                             </Select>
                             <!-- 选我的门店,未选择距离,输入框 -->
-                            <Input class="customValue" v-model.number="obj.customValue" :class="{error:error.customValue}" placeholder="0" style="width: 60px"></Input>
+                            <Input class="customValue" v-model.number="obj.customValue" :class="{error:error.customValue}" placeholder="0" style="width: 60px" @on-change="changeInput"></Input>
                         </div>
                     </template>
                     <!-- 选择增益排斥品牌 -->
@@ -88,7 +88,7 @@
                                 <Option v-for="item in newData.operationList || []" :value="item.value" :key="item.value">{{item.label}}</Option>
                             </Select>
                             <div class="r">
-                                <Input v-model.number="obj.num" placeholder="-" style="width: 60px" :class="{error:error.num}"></Input><span>个</span>
+                                <Input v-model.number="obj.num" placeholder="-" style="width: 60px" :class="{error:error.num}" @on-change="changeInput"></Input><span>个</span>
                             </div>
                         </div>
                     </template>
@@ -356,6 +356,14 @@ export default {
             });
             this.clearRed();
             this.validStoreParam();
+        },
+        changeInput() {
+            this.$emit('on-change', {
+                index: this.index,
+                condition: this.obj
+            });
+            this.clearRed();
+            this.validOperation();
         },
         subtraction() {
             this.$emit('on-minus', this.index);
