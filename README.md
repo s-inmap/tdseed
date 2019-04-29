@@ -2,6 +2,8 @@
 
 > A city map with components library by Vue2.0.js
 
+## 文档
+https://s-inmap.github.io/tdseed-doc/#/
 
 ## CDN 引入
 ``` script
