@@ -91,6 +91,7 @@
   "bugs": {
     "url": "https://github.com/s-inmap/tdseed/issues"
   },
+  "homepage": "https://s-inmap.github.io/tdseed-doc/",
   "license": "MIT",
   "engines": {
     "node": ">=8.9.1",
