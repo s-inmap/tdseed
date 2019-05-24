@@ -36,9 +36,8 @@ export default {
     mounted() {
         this.animateName = '';
         setTimeout(() => {
-            this.animateName = this.animation || 'slide-in';
+            this.animateName = this.animation;
         }, 1000)
-
     },
     activated() {},
     deactivated() {},
