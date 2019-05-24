@@ -3,6 +3,7 @@
         <button @click="one">one</button>
         <button @click="two">two</button>
         <button @click="three">three</button>
+        <button @click="four">four</button>
         <Swipers ref="swipers" id="Swipers">
             <div slot="nav" class="top">
                 <h1>文章标题</h1>
@@ -15,6 +16,9 @@
             </SwiperPane>
             <SwiperPane name="resultPage" animation="slide-in">
                 <div>three</div>
+            </SwiperPane>
+            <SwiperPane name="fourPage" animation="">
+                <div>four</div>
             </SwiperPane>
         </Swipers>
     </div>
@@ -34,6 +38,9 @@ export default {
         },
         three() {
             this.$refs.swipers.open('resultPage')
+        },
+        four() {
+            this.$refs.swipers.open('fourPage')
         }
     }
 }
