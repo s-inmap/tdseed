@@ -33,6 +33,7 @@ export default {
 <style>
 /*开发模式*/
 
+
 /*@import '../src/assets/css/main.css';*/
 
 </style>
@@ -50,6 +51,7 @@ body {
         padding: 10px;
         a {
             margin-right: 10px;
+            font-size: 14px;
         }
     }
     .components {
