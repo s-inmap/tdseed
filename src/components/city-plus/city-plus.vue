@@ -15,7 +15,7 @@
                 <div class="row" v-for="(item,index) in showCityArray" :key='index'>
                     <div class="city-label">{{item[0]}}</div>
                     <div class="city-label-list">
-                        <div :class="['city',allowedCity.includes(subItem.name) === true ? '' :'not-allowed']" v-for="subItem in item[1]" :key='subItem.name' @click="changeCity(subItem)">{{subItem.name}}</div>
+                        <div v-for="subItem in item[1]" :key='subItem.name' :class="['city',allowedCity.includes(subItem.name) === true ? '' :'not-allowed']" @click="changeCity(subItem)">{{subItem.name}}</div>
                     </div>
                 </div>
             </div>
