@@ -4,8 +4,8 @@
  * @return {[type]}     [number]
  */
 const milliFormat = (num) => {
-    return num && num.toString()
-        .replace(/(^|\s)\d+/g, (m) => m.replace(/(?=(?!\b)(\d{3})+$)/g, ','))
+  return num && num.toString()
+    .replace(/(^|\s)\d+/g, (m) => m.replace(/(?=(?!\b)(\d{3})+$)/g, ','))
 }
 
 /**
@@ -13,10 +13,10 @@ const milliFormat = (num) => {
  * @return {[type]}     [number]
  */
 const random = () => {
-    return Math.floor(Math.random() * 1000000);
+  return Math.floor(Math.random() * 1000000)
 }
 
 export default {
-    milliFormat,
-    random
+  milliFormat,
+  random
 }

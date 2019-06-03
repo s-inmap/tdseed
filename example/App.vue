@@ -24,9 +24,11 @@
         </div>
     </div>
 </template>
-<script>
-export default {
-    name: 'App'
+<script lang="ts">
+import Vue from 'vue'
+
+export default class App extends Vue{
+    name: string = 'App'
 }
 
 </script>
