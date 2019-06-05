@@ -2,6 +2,15 @@
 
 > A city map with components library by Vue2.0.js
 
+
+[![node](https://img.shields.io/node/v/tdseed.svg?style=flat-square)](https://www.npmjs.org/package/tdseed)
+[![NPM downloads](http://img.shields.io/npm/dm/tdseed.svg?style=flat-square)](https://npmjs.org/package/tdseed)
+[![NPM downloads](https://img.shields.io/npm/dt/tdseed.svg?style=flat-square)](https://npmjs.org/package/tdseed)
+![JS gzip size](http://img.badgesize.io/https://unpkg.com/tdseed/dist/tdseed.min.js?compression=gzip&label=gzip%20size:%20JS&style=flat-square)
+![CSS gzip size](http://img.badgesize.io/https://unpkg.com/tdseed/dist/static/tdseed.css?compression=gzip&label=gzip%20size:%20CSS&style=flat-square)
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+
+
 ## 文档
 https://s-inmap.github.io/tdseed-doc/#/
 
